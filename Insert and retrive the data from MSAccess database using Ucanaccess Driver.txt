@@ -1,0 +1,33 @@
+import java.sql.*;
+import java.io.*;
+public class Db{
+public static void main(String[] args)
+{
+ try
+   {
+    Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+    Connection c=DriverManager.getConnection("jdbc:ucanaccess://F://Eclipse//Test//A1.access");
+    Statement s=c.createStatement();
+    System.out.println("Connection established");
+    s.execute("create table Mark(USN varchar, Mark1 number, Mark2 number )");
+    System.out.println("Table created");
+    s.executeUpdate("insert into Mark values('4AL18CS094',80,90);
+    s.executeUpdate("insert into Mark values('4AL18CS095',90,94);
+    System.out.println("Inserted");
+    ResultSet rs=s.executeQuery("select from Mark");
+    System.out.println("The records in the table are:");
+    while(rs.next())
+   {
+    String usn=rs.getString("USN");
+    Int Mark1=rs.getString("Mark1");
+    Int Mark2=rs.getString("Mark2");
+    System.out.println(usn+ "," +mark1+ ","+mark2);
+   }
+   }
+Catch(Exception e)
+{
+ System.out.println("error");
+}
+}
+}   
+    
